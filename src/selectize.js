@@ -470,9 +470,11 @@ $.extend(Selectize.prototype, {
 				self.advanceSelection(1, e);
 				return;
 			case KEY_TAB:
-				if (self.settings.selectOnTab && self.isOpen && self.$activeOption) {
+				if (self.settings.selectOnTab !== false && self.isOpen && self.$activeOption) {
 					self.onOptionSelect({currentTarget: self.$activeOption});
-					e.preventDefault();
+					if (self.settings.selectOnTab !== 'selectAndTab') {
+					  e.preventDefault();
+					}
 				}
 				if (self.settings.create && self.createItem()) {
 					e.preventDefault();

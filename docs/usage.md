@@ -129,8 +129,8 @@ $(function() {
 	</tr>
 	<tr>
 		<td valign="top"><code>selectOnTab</code></td>
-		<td valign="top">If true, the tab key will choose the currently selected item.</td>
-		<td valign="top"><code>boolean</code></td>
+		<td valign="top">Defines behavior of the tab key with regards to selection. "false" prevents selection via tab. "true" enables selection via tab but consumes the tab key event. "selectAndTab" enables selection and maintains normal tabbing behavior.</td>
+		<td valign="top"><code>mixed</code></td>
 		<td valign="top"><code>false</code></td>
 	</tr>
 	<tr>
