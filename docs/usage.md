@@ -116,6 +116,12 @@ $(function() {
 		<td valign="top"><code>false</code></td>
 	</tr>
 	<tr>
+		<td valign="top"><code>dropdownDirection</code></td>
+		<td valign="top">Direction dropdown is display. This should be either "up", "down" or "auto".</td>
+		<td valign="top"><code>string</code></td>
+		<td valign="top"><code>auto</code></td>
+	</tr>
+	<tr>
 		<td valign="top"><code>dropdownParent</code></td>
 		<td valign="top">The element the dropdown menu is appended to. This should be "body" or null. If null, the dropdown will be appended as a child of the selectize control.</td>
 		<td valign="top"><code>string</code></td>
@@ -127,6 +133,7 @@ $(function() {
 		<td valign="top"><code>boolean</code></td>
 		<td valign="top"><code>false</code></td>
 	</tr>
+	
 	<tr>
 		<td valign="top"><code>selectOnTab</code></td>
 		<td valign="top">If true, the tab key will choose the currently selected item.</td>
