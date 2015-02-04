@@ -1100,13 +1100,14 @@ $.extend(Selectize.prototype, {
 	 *   this.addOption(data)
 	 *
 	 * @param {object} data
+	 * @param {boolean} persist - Treat this option as a real option
 	 */
-	addOption: function(data) {
+	addOption: function(data, persist) {
 		var i, n, optgroup, value, self = this;
 
 		if ($.isArray(data)) {
 			for (i = 0, n = data.length; i < n; i++) {
-				self.addOption(data[i]);
+				self.addOption(data[i], persist);
 			}
 			return;
 		}
@@ -1114,7 +1115,9 @@ $.extend(Selectize.prototype, {
 		value = hash_key(data[self.settings.valueField]);
 		if (typeof value !== 'string' || self.options.hasOwnProperty(value)) return;
 
-		self.userOptions[value] = true;
+		if (!persist) {
+			self.userOptions[value] = true;
+		}
 		self.options[value] = data;
 		self.lastQuery = null;
 		self.trigger('option_add', value, data);
