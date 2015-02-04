@@ -470,7 +470,7 @@ $.extend(Selectize.prototype, {
 				self.advanceSelection(1, e);
 				return;
 			case KEY_TAB:
-				if (self.settings.selectOnTab && self.isOpen && self.$activeOption) {
+				if (self.settings.selectOnTab && self.isOpen && self.$activeOption && self.settings.mode === 'single') {
 					self.onOptionSelect({currentTarget: self.$activeOption});
 					e.preventDefault();
 				}
