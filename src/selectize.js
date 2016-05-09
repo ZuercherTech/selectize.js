@@ -364,6 +364,9 @@ $.extend(Selectize.prototype, {
 			if (!defaultPrevented) {
 				window.setTimeout(function() {
 					self.focus();
+					if (self.settings.openOnFocus === 'click' && !self.isOpen) {
+						self.open();
+					}
 				}, 0);
 			}
 		}
@@ -550,7 +553,7 @@ $.extend(Selectize.prototype, {
 		if (!self.$activeItems.length) {
 			self.showInput();
 			self.setActiveItem(null);
-			self.refreshOptions(!!self.settings.openOnFocus);
+			self.refreshOptions(self.settings.openOnFocus === true);
 		}
 
 		self.refreshState();
