@@ -538,16 +538,11 @@ $.extend(Selectize.prototype, {
 		var self = this;
 
 		self.isFocused = true;
-		if (self.isDisabled) {
-			self.blur();
-			e && e.preventDefault();
-			return false;
-		}
 
 		if (self.ignoreFocus) return;
 		if (self.settings.preload === 'focus') self.onSearchChange('');
 
-		if (!self.$activeItems.length) {
+		if (!self.$activeItems.length && !self.isDisabled) {
 			self.showInput();
 			self.setActiveItem(null);
 			self.refreshOptions(!!self.settings.openOnFocus);
@@ -862,7 +857,6 @@ $.extend(Selectize.prototype, {
 	 */
 	focus: function() {
 		var self = this;
-		if (self.isDisabled) return;
 
 		self.ignoreFocus = true;
 		self.$control_input[0].focus();
@@ -1491,7 +1485,7 @@ $.extend(Selectize.prototype, {
 			.toggleClass('invalid', self.isInvalid)
 			.toggleClass('locked', isLocked)
 			.toggleClass('full', isFull).toggleClass('not-full', !isFull)
-			.toggleClass('input-active', self.isFocused && !self.isInputHidden)
+			.toggleClass('input-active', self.isFocused && !self.isInputHidden && !self.isDisabled)
 			.toggleClass('dropdown-active', self.isOpen)
 			.toggleClass('has-options', !$.isEmptyObject(self.options))
 			.toggleClass('has-items', self.items.length > 0);
@@ -1828,6 +1822,7 @@ $.extend(Selectize.prototype, {
 	disable: function() {
 		var self = this;
 		self.$input.prop('disabled', true);
+		self.$input.prop('readOnly', true);
 		self.isDisabled = true;
 		self.lock();
 	},
@@ -1839,6 +1834,7 @@ $.extend(Selectize.prototype, {
 	enable: function() {
 		var self = this;
 		self.$input.prop('disabled', false);
+		self.$input.prop('readOnly', false);
 		self.isDisabled = false;
 		self.unlock();
 	},
