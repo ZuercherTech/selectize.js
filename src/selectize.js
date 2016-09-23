@@ -1822,7 +1822,7 @@ $.extend(Selectize.prototype, {
 	disable: function() {
 		var self = this;
 		self.$input.prop('disabled', true);
-		self.$input.prop('readOnly', true);
+		self.$input.prop('readonly', true);
 		self.isDisabled = true;
 		self.lock();
 	},
@@ -1834,7 +1834,7 @@ $.extend(Selectize.prototype, {
 	enable: function() {
 		var self = this;
 		self.$input.prop('disabled', false);
-		self.$input.prop('readOnly', false);
+		self.$input.prop('readonly', false);
 		self.isDisabled = false;
 		self.unlock();
 	},
